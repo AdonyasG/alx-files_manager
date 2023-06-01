@@ -1,10 +1,12 @@
 import express from 'express';
-import AppController from '../controllers/UsersController';
 
-const app = express();
+const UsersController = require('../controllers/UsersController');
+const Appcontroller = require('../controllers/AppController');
 
-app.get('/status', AppController.getStatus);
-app.get('/stats', AppController.getStats);
-app.post('/users', AppController.postNew);
+const routes = express.Router();
 
-export default app;
+routes.get('/status', Appcontroller.getStatus);
+routes.get('/stats', Appcontroller.getStats);
+routes.post('/users', UsersController.postNew);
+
+export default routes;
